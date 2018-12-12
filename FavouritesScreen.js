@@ -53,7 +53,7 @@ export default class FavouritesScreen extends React.Component {
                 <Content>
                     <View>
                         {(!list || this.state.nofav) && (
-                            <Text>No Favourites</Text>
+                            <Text style={styles.text}>No Favourites</Text>
                         )}
 
                         {(list) && (
@@ -109,5 +109,9 @@ export default class FavouritesScreen extends React.Component {
 const styles = StyleSheet.create({
     container : {
         backgroundColor: '#E4C9C2'
-    }
+    },
+    text: {
+        marginTop: 200,
+        textAlign: 'center'
+    },
 });

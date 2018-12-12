@@ -14,7 +14,8 @@ export const Images = {
     image_not_found: require('./image-not-found.png'),
     add_fav: require('./addFav.png'),
     show_fav: require('./showFav.png'),
-    del_fav: require('./delFav.png')
+    del_fav: require('./delFav.png'),
+    yelp_logo: require('./yelpLogo.png')
 };
 
 export const getStarRating = (star) => {

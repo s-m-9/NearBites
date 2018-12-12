@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, Button as NavButton } from 'react-native';
+import { StyleSheet, View, Button as NavButton, Image } from 'react-native';
 import List from './components/RestaurantList';
 import {Container, Header, Item, Button, Input, Text, Icon, Spinner, Content} from 'native-base';
+import { Images } from './img/Images'
 
 export default class HomeScreen extends React.Component {
     constructor(props) {
@@ -99,6 +100,10 @@ export default class HomeScreen extends React.Component {
     render() {
         return (
                 <Container style = {styles.searchContainer}>
+                    <Image
+                        style={styles.image}
+                        source={Images.yelp_logo}
+                    />  
                     <Header searchBar rounded style={styles.header}>
                         <Item>
                             <Icon name="ios-search"/>
@@ -168,5 +173,12 @@ const styles = StyleSheet.create({
     },
     list:{
         marginTop: -25
+    },
+    image : {
+        marginLeft: "auto",
+        marginRight: 'auto',
+        height: 44,
+        width: 44,
+        marginTop: 20
     }
 });
