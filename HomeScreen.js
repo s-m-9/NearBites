@@ -13,7 +13,8 @@ export default class HomeScreen extends React.Component {
             error: "",
             term: "",
             isLoading: false,
-            noResult: false
+            noResult: false,
+            text: ""
         }
     }
 
@@ -101,10 +102,13 @@ export default class HomeScreen extends React.Component {
                     <Header searchBar rounded style={styles.header}>
                         <Item>
                             <Icon name="ios-search"/>
-                            <Input placeholder="Search" onChangeText={(text) => this.setState({ term: text }) }/>
+                        <Input placeholder="Search" ref={'SearchInput'} onChangeText={(text) => this.setState({ term: text }) }/>
                         </Item>
                             { (this.state.latitude !== "") && (this.state.term !== "") && (
-                                <Button  transparent dark onPress={this.showData}>
+                                <Button  transparent dark onPress={() => {
+                                    this.showData();
+                                    this.refs['SearchInput'].setNativeProps({ text: '' });
+                                }}>
                                     <Text>Search</Text>
                                 </Button>
                             )}
