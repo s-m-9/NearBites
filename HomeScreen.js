@@ -61,15 +61,14 @@ export default class HomeScreen extends React.Component {
             .then((response) => response.json())
             .then((data) => {
                 this.setState({term: ""})
-                if(data.businesses.length == 0){
-                    this.setState({noResult: true})
-                }
                 setTimeout(()=>{
                         this.setState({ list: data.businesses,
                             isLoading: false,
                             noResult: false
                         });
-                    
+                        if(this.state.list.length == 0){
+                            this.setState({noResult: true})
+                        }
                     console.log(this.state.list[0]);
                 }, 100);
                 
@@ -98,6 +97,12 @@ export default class HomeScreen extends React.Component {
     }
 
     render() {
+        let list = this.state.list;
+        let display;
+        if(list != null && list.length !== 0){
+
+            display = list;
+        }
         return (
                 <Container style = {styles.searchContainer}>
                     <Image
@@ -127,7 +132,7 @@ export default class HomeScreen extends React.Component {
                 }
                 <Content>
                 { 
-                    (this.state.list) && (
+                    (display) && (
                         <View style={styles.listContainer}>
                         <Text style={styles.text}>showing Results for {this.searchValue}</Text>
                         <List list={this.state.list} details={this.details} style={styles.list}/>

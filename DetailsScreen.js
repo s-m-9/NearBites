@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, AsyncStorage, TouchableHighlight} from 'react-native';
-import {getStarRating, Images } from './img/Images'
+import {getStarRating, Images } from './img/Images';
+import {Container, Content} from 'native-base';
 
 export default class DetailsScreen extends React.Component {
     constructor(props) {
@@ -78,7 +79,9 @@ export default class DetailsScreen extends React.Component {
         console.log(this.state.shop)
 
         return (
-            <View style={styles.container}>
+            <Container>
+                <Content>
+                <View style={styles.container}>
                 <View style={styles.details}> 
                     <Text style={styles.pageHeader}>{this.state.shop.name}</Text>
                     {
@@ -116,6 +119,9 @@ export default class DetailsScreen extends React.Component {
                 }
                
             </View>
+                </Content>
+            </Container>
+            
         );
     }
 }
